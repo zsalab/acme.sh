@@ -1,0 +1,37 @@
+#!/bin/sh
+
+set -e
+
+case "$1" in
+	configure)
+		if ! id acme-sh > /dev/null 2>&1 ; then
+			adduser --system --home /var/lib/acme-sh --no-create-home --ingroup ssl-cert --disabled-password --shell /bin/sh acme-sh
+		fi
+
+		chown -R acme-sh:adm /var/log/acme-sh
+		chmod g+s /var/log/acme-sh
+		
+		chown -R acme-sh /var/lib/acme-sh
+		chmod 0750 /var/lib/acme-sh
+		
+		chown -R acme-sh.ssl-cert /etc/ssl/acme-sh/private
+		chmod 02710 /etc/ssl/acme-sh/private
+		chown -R acme-sh /etc/ssl/acme-sh/certs
+
+		if [ ! -e /var/lib/acme-sh/ca ]; then
+			/usr/bin/acme.sh --register-account
+		fi
+
+		service cron reload
+	;;
+
+	abort-upgrade|abort-remove|abort-deconfigure)
+	;;
+
+	*)
+		echo "postinst called with unknown argument \`$1'" >&2
+		exit 1
+	;;
+esac
+
+exit 0

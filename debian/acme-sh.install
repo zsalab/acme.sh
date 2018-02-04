@@ -1,0 +1,4 @@
+debian/bin/acme.sh usr/bin
+debian/cron/acme-sh etc/cron.d
+debian/logrotate/acme-sh etc/logrotate.d
+acme.sh usr/lib/acme-sh

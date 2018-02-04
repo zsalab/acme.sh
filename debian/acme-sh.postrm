@@ -1,0 +1,14 @@
+#!/bin/sh
+
+set -e
+
+if [ "$1" = "purge" ] ; then
+	rm -rf /etc/ssl/acme-sh
+	rm -rf /var/log/acme-sh
+	rm -rf /var/lib/acme-sh
+	deluser --system --quiet acme-sh
+fi
+
+service cron reload
+
+exit 0

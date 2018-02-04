@@ -1,0 +1,7 @@
+/acme-sh
+/acme-sh-deploy
+/acme-sh-dnsapi
+*.substvars
+*.debhelper.log
+/build-stamp
+/files

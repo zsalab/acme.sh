@@ -1,0 +1,9 @@
+if [ -z "$LE_WORKING_DIR" ]; then
+	LE_WORKING_DIR=/var/lib/acme-sh
+fi
+if [ -z "$LE_TEMP_DIR" ]; then
+	LE_TEMP_DIR=/tmp/acme-sh
+fi
+if [ -z "$DEFAULT_LOG_FILE" ]; then
+	DEFAULT_LOG_FILE=/var/log/acme-sh/main.log
+fi

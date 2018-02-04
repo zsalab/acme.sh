@@ -1,0 +1,4 @@
+etc/ssl/acme-sh/private
+etc/ssl/acme-sh/certs
+var/lib/acme-sh
+var/log/acme-sh
